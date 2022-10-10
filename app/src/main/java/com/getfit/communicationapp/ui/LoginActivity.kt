@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.getfit.communicationapp.API.ApiClient
 import com.getfit.communicationapp.API.ApiInterface
+import com.getfit.communicationapp.Messaging.MessagesActivity
 import com.getfit.communicationapp.databinding.ActivityLoginBinding
 import com.getfit.communicationapp.models.LoginRequest
 import com.getfit.communicationapp.models.LoginResponse
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener { validateLogin() }
     }
-
+//   validating login
     fun validateLogin() {
         var error = false
         binding.tilEmail.error = null
@@ -78,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                     val loginResponse = response.body()
                     Toast.makeText(baseContext, loginResponse?.message, Toast.LENGTH_LONG).show()
                     loginDetails(loginResponse!!)
-                    startActivity(Intent(baseContext, HomeActivity::class.java))
+                    startActivity(Intent(baseContext, MessagesActivity::class.java))
                 } else {
                     val error = response.errorBody()?.string()
                     Toast.makeText(baseContext, error, Toast.LENGTH_LONG).show()
